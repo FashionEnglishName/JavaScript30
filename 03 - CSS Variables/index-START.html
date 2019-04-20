@@ -25,6 +25,11 @@
     /*
       misc styles, nothing to do with CSS variables
     */
+    :root {
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+    }
 
     body {
       text-align: center;
@@ -42,9 +47,49 @@
     input {
       width: 100px;
     }
+
+    img {
+      background-color: var(--base);
+      padding: var(--spacing);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
   </style>
 
   <script>
+    const inputs = document.querySelectorAll("input");
+
+    const setValue = function () {
+        console.log("--" + this.name);
+        console.log(this.value);
+        let suffix = this.dataset.sizing ? "px" : "";
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    };
+
+    const throttle = function (fn) {
+        let last = null;
+        return function () {
+            let now = new Date().getTime();
+            if(last == null) {
+                fn.apply(this, arguments);
+                last = now;
+            } else if(now - last < 100) {
+                // do nothing
+            } else {
+                fn.apply(this, arguments);
+                last = now;
+            }
+        };
+    };
+
+    inputs.forEach((item) => item.addEventListener('change', throttle(setValue)));
+    inputs.forEach((item) => item.addEventListener('mousemove', throttle(setValue)));
+
+
+
   </script>
 
 </body>
