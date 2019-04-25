@@ -12,4 +12,3 @@ Regular Expression put variable in it
 new RegExp();
 
 string.match(regex)
-
