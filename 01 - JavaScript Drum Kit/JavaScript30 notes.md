@@ -61,7 +61,13 @@ text-shadow: 5px 10px;
 
 html: kbd, q
 
-**user defined attribute**: data-xxx. Can be get by attr(), or **element.dataset.xxx**, or **element.dataset["xxx"]**. XXX will use camel case instead of dash.
+---
+
+user defined attribute**: data-xxx. Can be get by attr(), or **element.dataset.xxx**, or **element.dataset["xxx"]**. XXX will use camel case instead of dash.
+
+---
+
+
 
 element.classList
 
