@@ -48,6 +48,16 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+function strap(bandName) {
+  const matches = /^(an |the |a )/i;
+
+  return bandName.replace(matches, '').trim();
+}
+
+const sortedBands = bands.sort((a, b) => strap(a) > strap(b) ? 1 : -1);
+sortedBands.map(band => {
+   document.querySelector("#bands").innerHTML += `<li>${band}</li>`
+});
 
 </script>
 
